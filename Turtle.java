@@ -273,8 +273,9 @@ class TurtleWelt
 
     /**
      * Initialisiert eine neue TurtleWelt.
+     * Privat, da nur die öffentliche statische globaleWelt verwendet werden soll.
      */
-    public TurtleWelt()
+    private TurtleWelt()
     {
         BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
