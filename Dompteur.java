@@ -29,7 +29,7 @@ class Dompteur
      * @param laenge der Abstand vom Startpunkt zum Zielpunkt
      * @param detail der Detailgrad (die Rekursiontiefe)
      */
-    public void zeichneKochKurve(Turtle turtle, double laenge, int detail)
+    private void zeichneKochKurve(Turtle turtle, double laenge, int detail)
     {
     }
 }
