@@ -49,8 +49,8 @@ class Turtle
     private int _verzoegerung;
     
     // Moegliche Farbwerte
-    private static final HashMap<String, Color> farben;
-    private static final Color[] farbArray;
+    private static  HashMap<String, Color> farben;
+    private static  Color[] farbArray;
 
     static
     {
@@ -263,19 +263,19 @@ class Turtle
  */
 class TurtleWelt
 {
-    public static final int WIDTH = 500;
-    public static final int HEIGHT = 500;
+    public static  int WIDTH = 500;
+    public static  int HEIGHT = 500;
     
-    public static final TurtleWelt globaleWelt = new TurtleWelt();
+    public static  TurtleWelt globaleWelt = new TurtleWelt();
     
-    private final Graphics2D _graphics;
-    private final JFrame _frame;
+    private final  Graphics2D _graphics;
+    private final  JFrame _frame;
 
     /**
      * Initialisiert eine neue TurtleWelt.
-     * Privat, da nur die öffentliche statische globaleWelt verwendet werden soll.
+     * Privat, da nur die ï¿½ffentliche statische globaleWelt verwendet werden soll.
      */
-    private TurtleWelt()
+    public TurtleWelt()
     {
         BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
@@ -329,6 +329,21 @@ class TurtleWelt
         _graphics.drawLine((int)(x1 + 0.5), (int)(y1 + 0.5), (int)(x2 + 0.5), (int)(y2 + 0.5));
         _frame.repaint();
     }
+    
+    /**
+     * Wartet die angegebene Zeit.
+     * @param timeout 
+     */
+    public static void warte(long timeout)
+	{
+		try
+		{
+			Thread.sleep(timeout);
+		}
+		catch (InterruptedException ignore)
+		{
+		}
+	}
 }
 
 /**
