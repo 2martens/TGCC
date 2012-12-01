@@ -1,5 +1,5 @@
 /**
- * Verkˆrpert ein Damebrett.
+ * Verk√∂rpert ein Damebrett.
  * 
  * @author		Jim Martens
  * @copyright	2012 Jim Martens
@@ -8,20 +8,20 @@
  */
 public class Damebrett
 {
-	// Enth‰lt ein String Array.
-	private final StringArray _felder;
+	// Enth√§lt ein Turtle.
+	private final  Turtle _turtle;
 	
-	// Enth‰lt ein Turtle.
-	private final Turtle _turtle;
+	// Enth√§lt die Kantenl√§nge.
+	private  double _kantenlaenge;
 	
-	// Enth‰lt die Kantenl‰nge.
-	private final int _kantenlaenge;
+	// Enth√§lt die anf√§ngliche x Position.
+	private final  double _xPosition;
 	
-	// Enth‰lt die anf‰ngliche x Position.
-	private final double _xPosition;
+	// Enth√§lt die anf√§ngliche y Position.
+	private final  double _yPosition;
 	
-	// Enth‰lt die anf‰ngliche y Position.
-	private final double _yPosition;
+	// Enth√§lt einen Figurenspeicher.
+	private final Figurenspeicher _speicher;
 	
 	/**
 	 * Erstellt ein neues Damefeld.
@@ -31,13 +31,13 @@ public class Damebrett
 	 */
 	public Damebrett(int kantenlaenge, double xPosition, double yPosition)
 	{
-		_felder = new StringArray();
-		
 		_xPosition = xPosition;
 		_yPosition = yPosition;
 		_turtle = new Turtle(_xPosition, _yPosition);
+		_turtle.setzeGeschwindigkeit(10);
+		_speicher = new Figurenspeicher();
 		
-		// Sicherstellen, dass die Kantenl‰nge nicht negativ oder 0 ist.
+		// Sicherstellen, dass die KantenlÔøΩnge nicht negativ oder 0 ist.
 		if (kantenlaenge < 1)
 		{
 			_kantenlaenge = 1;
@@ -48,37 +48,89 @@ public class Damebrett
 		}
 		
 		brettErstellen();
+		figurenErstellen();
+	}
+	
+	/**
+	 * Setzt eine Figur, die auf startFeld steht auf endFeld.
+	 * @return den Speicher dieses Bretts
+	 */
+	public Figurenspeicher gibSpeicher()
+	{
+		return _speicher;
+	}
+	
+	/**
+	 * Setzt die Figuren auf das Damefeld.
+	 */
+	public void figurenErstellen()
+	{
+		for (int reihe = 0; reihe < 8; ++reihe)
+		{
+			// Enth√§lt die Farbe der Figuren.
+			String farbe = "weiss";
+			
+			/* Den anderen Fall m√ºssen wir nicht abdecken, 
+			 * da die farbe bei jedem Durchgang standardm√§√üig bereits auf weiss ist.
+			 */
+			if (reihe >= 5)
+			{
+				farbe = "rot";
+			}
+			else if (reihe == 3 || reihe == 4)
+			{
+				farbe = "schwarz";
+			}
+			
+			for (int feld = 0; feld < 8; ++feld)
+			{
+				boolean setzeFigur = ((feld + reihe) % 2) == 1;
+				if (!setzeFigur)
+				{
+					continue;
+				}
+				
+				Damefigur figur = new Damefigur(
+						farbe, 
+						(0.5 * _kantenlaenge) - 2, 
+						_xPosition + (0.5 * _kantenlaenge) + (feld * _kantenlaenge), 
+						_yPosition + (0.5 * _kantenlaenge) + (reihe * _kantenlaenge)
+				);
+				_speicher.setzeFigur(reihe, feld, figur);
+			}
+		}
 	}
 	
 	/**
 	 * Erstellt das Brett.
 	 * 
 	 * Es besteht aus 8x8 Feldern (wie bei einem Schachbrett) und ist abwechselnd mit schwarzen 
-	 * und weiﬂen Fl‰chen gef¸llt.
+	 * und wei√üen Fl√§chen gef√ºllt.
 	 * 
 	 */
-	private void brettErstellen()
+	public void brettErstellen()
 	{
-		for (int i = 0; i < 8; ++i)
+		for (int reihe = 0; reihe < 8; ++reihe)
 		{
-			if (i > 0) 
+			if (reihe > 0) 
 			{
 				_turtle.hinterlasseKeineSpur();
-				_turtle.geheZu(_xPosition, _yPosition + (i*_kantenlaenge));
+				_turtle.geheZu(_xPosition, _yPosition + (reihe * _kantenlaenge));
 				_turtle.drehe(90);
 				_turtle.hinterlasseSpur();
 			}
 			
-			reiheErstellen();
+			reiheErstellen(reihe);
 		}
 	}
 	
 	/**
 	 * Erstellt eine neue Reihe.
+	 * @param reihennummer
 	 */
-	private void reiheErstellen()
+	public void reiheErstellen(int reihennummer)
 	{
-		for (int i = 0; i < 8; ++i)
+		for (int feld = 0; feld < 8; ++feld)
 		{
 			_turtle.geheVor(_kantenlaenge); // oben
 			_turtle.drehe(90); 
@@ -88,7 +140,16 @@ public class Damebrett
 			_turtle.drehe(90);
 			_turtle.geheVor(_kantenlaenge); // links
 			
-			if (i == 7) 
+			if (((feld + reihennummer) % 2) == 1)
+			{
+				double xPosition = _turtle.gibX();
+				double yPosition = _turtle.gibY();
+				fuelleFeldAus(_kantenlaenge);
+				_turtle.hinterlasseKeineSpur();
+				_turtle.geheZu(xPosition, yPosition);
+			}
+			
+			if (feld == 7) 
 			{
 				continue;
 			}
@@ -98,5 +159,25 @@ public class Damebrett
 			_turtle.geheVor(_kantenlaenge);
 			_turtle.hinterlasseSpur();
 		}
+	}
+	
+	/**
+	 * Bef√ºllt ein Feld mit schwarzer Farbe.
+	 * @param kantenlaenge
+	 */
+	public void fuelleFeldAus(double kantenlaenge)
+	{
+		if (kantenlaenge == 0)
+		{
+			return;
+		}
+		
+		for (int i = 0; i < 4; ++i)
+		{
+			_turtle.drehe(90);
+			_turtle.geheVor(kantenlaenge - 1);
+		}
+		
+		fuelleFeldAus(kantenlaenge - 1);
 	}
 }
