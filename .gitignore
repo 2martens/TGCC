@@ -10,3 +10,6 @@
 bluej.pkg
 README.txt
 *.ctxt
+
+# general #
+doc/*.*
