@@ -8,19 +8,19 @@
  */
 public class Main
 {
-	// Enthält ein Main Objekt.
+	// Enthaelt ein Main Objekt.
 	private static Main _instance;
 	
-	// Enthält ein Damebrett.
+	// Enthaelt ein Damebrett.
 	private final  Damebrett _damebrett;
 	
-	// Enthält die Kantenlänge.
+	// Enthaelt die Kantenlaenge.
 	private final  int _kantenlaenge;
 	
-	// Enthält die x Position.
+	// Enthaelt die x Position.
 	private final  int _xPosition;
 	
-	// Enthält die y Position.
+	// Enthaelt die y Position.
 	private final  int _yPosition;
 	
 	/**
@@ -32,7 +32,7 @@ public class Main
 	}
 	
 	/**
-	 * Gibt ein Objekt von Main zurück.
+	 * Gibt ein Objekt von Main zurueck.
 	 * @return ein Main Objekt
 	 */
 	public static Main getInstance()
@@ -171,7 +171,7 @@ public class Main
 	}
 	
 	/**
-	 * Wartet um die Dauer der Ausführung der Methode.
+	 * Wartet um die Dauer der Ausfuehrung der Methode.
 	 */
 	private static void warte()
 	{

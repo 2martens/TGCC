@@ -1,5 +1,5 @@
 /**
- * Repräsentiert eine Damefigur.
+ * Repraesentiert eine Damefigur.
  * @author		Jim Martens
  * @copyright	2012 Jim Martens
  * @license		http://www.gnu.org/licenses/gpl-3.0 GNU General Public License, version 3
@@ -7,19 +7,19 @@
  */
 public class Damefigur
 {
-	// Enthält die Farbe dieser Figur.
+	// Enthaelt die Farbe dieser Figur.
 	private  String _farbe;
 	
-	// Enthält den Radius der Figur.
+	// Enthaelt den Radius der Figur.
 	private  double _radius;
 	
-	// Enthält die anfängliche x Position.
+	// Enthaelt die anfaengliche x Position.
 	private final  double _xPosition;
 	
-	// Enthält die anfängliche y Position.
+	// Enthaelt die anfaengliche y Position.
 	private final  double _yPosition;
 	
-	// Enthält ein Turtle-Objekt.
+	// Enthaelt ein Turtle-Objekt.
 	private final  Turtle _turtle;
 	
 	/**
@@ -66,7 +66,7 @@ public class Damefigur
 	}
 	
 	/**
-	 * Zeichnet die Figur wieder an der anfänglichen Stelle.
+	 * Zeichnet die Figur wieder an der anfaenglichen Stelle.
 	 */
 	public void erneutZeichnen()
 	{
@@ -107,7 +107,7 @@ public class Damefigur
 	}
 	
 	/**
-	 * Löscht die Figur.
+	 * Loescht die Figur.
 	 */
 	public void loesche()
 	{

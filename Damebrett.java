@@ -1,5 +1,5 @@
 /**
- * Verkörpert ein Damebrett.
+ * Verkoerpert ein Damebrett.
  * 
  * @author		Jim Martens
  * @copyright	2012 Jim Martens
@@ -8,19 +8,19 @@
  */
 public class Damebrett
 {
-	// Enthält ein Turtle.
+	// Enthaelt ein Turtle.
 	private final  Turtle _turtle;
 	
-	// Enthält die Kantenlänge.
+	// Enthaelt die Kantenlaenge.
 	private  double _kantenlaenge;
 	
-	// Enthält die anfängliche x Position.
+	// Enthaelt die anfaengliche x Position.
 	private final  double _xPosition;
 	
-	// Enthält die anfängliche y Position.
+	// Enthaelt die anfaengliche y Position.
 	private final  double _yPosition;
 	
-	// Enthält einen Figurenspeicher.
+	// Enthaelt einen Figurenspeicher.
 	private final Figurenspeicher _speicher;
 	
 	/**
@@ -67,11 +67,11 @@ public class Damebrett
 	{
 		for (int reihe = 0; reihe < 8; ++reihe)
 		{
-			// Enthält die Farbe der Figuren.
+			// Enthaelt die Farbe der Figuren.
 			String farbe = "weiss";
 			
-			/* Den anderen Fall müssen wir nicht abdecken, 
-			 * da die farbe bei jedem Durchgang standardmäßig bereits auf weiss ist.
+			/* Den anderen Fall muessen wir nicht abdecken, 
+			 * da die farbe bei jedem Durchgang standardmaeßig bereits auf weiss ist.
 			 */
 			if (reihe >= 5)
 			{
@@ -105,7 +105,7 @@ public class Damebrett
 	 * Erstellt das Brett.
 	 * 
 	 * Es besteht aus 8x8 Feldern (wie bei einem Schachbrett) und ist abwechselnd mit schwarzen 
-	 * und weißen Flächen gefüllt.
+	 * und weißen Flaechen gefuellt.
 	 * 
 	 */
 	public void brettErstellen()
@@ -162,7 +162,7 @@ public class Damebrett
 	}
 	
 	/**
-	 * Befüllt ein Feld mit schwarzer Farbe.
+	 * Befuellt ein Feld mit schwarzer Farbe.
 	 * @param kantenlaenge
 	 */
 	public void fuelleFeldAus(double kantenlaenge)

@@ -7,22 +7,22 @@
  */
 public class Textzeichner
 {
-	// Enthält den zu schreibenden Text.
+	// Enthaelt den zu schreibenden Text.
 	private final String _text;
 	
-	// Enthält die anfängliche x Position.
+	// Enthaelt die anfaengliche x Position.
 	private final double _xPosition;
 	
-	// Enthält die anfänfliche y Position.
+	// Enthaelt die anfaenfliche y Position.
 	private final double _yPosition;
 	
-	// Enthält die aktuelle x Position.
+	// Enthaelt die aktuelle x Position.
 	private double _currentXPosition;
 	
-	// Enthält die aktuelle y Position.
+	// Enthaelt die aktuelle y Position.
 	private double _currentYPosition;
 	
-	// Enthält ein Turtle.
+	// Enthaelt ein Turtle.
 	private final Turtle _turtle;
 	
 	/**
@@ -76,14 +76,14 @@ public class Textzeichner
 		_turtle.geheZu(_currentXPosition, _currentYPosition);
 		_turtle.drehe(90);
 		_turtle.hinterlasseSpur();
-		_turtle.geheVor(10); // obere Hälfte linker Strich
+		_turtle.geheVor(10); // obere Haelfte linker Strich
 		_turtle.drehe(-90);
 		_turtle.geheVor(10); // mittlerer Strich
 		_turtle.hinterlasseKeineSpur();
 		_turtle.geheZu(_currentXPosition, _currentYPosition + 10);
 		_turtle.drehe(90);
 		_turtle.hinterlasseSpur();
-		_turtle.geheVor(10); // untere Hälft linker Strich
+		_turtle.geheVor(10); // untere Haelft linker Strich
 		_turtle.drehe(-90);
 		_turtle.geheVor(10); // unterer Strich
 		

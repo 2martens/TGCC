@@ -288,7 +288,7 @@ public class Figurenspeicher
 	}
 	
 	/**
-	 * Gibt die Figur zurück, die an der angegebenen Stelle gespeichert ist.
+	 * Gibt die Figur zurueck, die an der angegebenen Stelle gespeichert ist.
 	 * @param reihe
 	 * @param feld
 	 * @return Die Figur an der angegebenen Stelle oder null.
