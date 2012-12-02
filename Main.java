@@ -24,6 +24,14 @@ public class Main
 	private final  int _yPosition;
 	
 	/**
+	 * @param args
+	 */
+	public static void main(String[] args)
+	{
+		Main.getInstance().start();
+	}
+	
+	/**
 	 * Gibt ein Objekt von Main zurück.
 	 * @return ein Main Objekt
 	 */
@@ -55,9 +63,8 @@ public class Main
 		Figurenspeicher speicher = _damebrett.gibSpeicher();
 		Damefigur figur = speicher.gibFigur(2, 1);
 		
-		
 		// Zug (2,1) nach (3,0)
-		TurtleWelt.warte(4000);
+		warte();
 		
 		figur.setzeGeschwindigkeit(10);
 		figur.loesche();
@@ -68,7 +75,7 @@ public class Main
 		
 		// Zug (5,6) nach (4,7)
 		figur = speicher.gibFigur(5, 6);
-		TurtleWelt.warte(4000);
+		warte();
 		figur.loesche();
 		
 		figur = speicher.gibFigur(4, 7);
@@ -77,7 +84,7 @@ public class Main
 		
 		// Zug (2,3) nach (3,4)
 		figur = speicher.gibFigur(2, 3);
-		TurtleWelt.warte(4000);
+		warte();
 		figur.loesche();
 		
 		figur = speicher.gibFigur(3, 4);
@@ -86,7 +93,7 @@ public class Main
 		
 		// Zug (5,0) nach (4,1)
 		figur = speicher.gibFigur(5, 0);
-		TurtleWelt.warte(4000);
+		warte();
 		figur.loesche();
 		
 		figur = speicher.gibFigur(4, 1);
@@ -95,7 +102,7 @@ public class Main
 		
 		// Zug (1,4) nach (2,3)
 		figur = speicher.gibFigur(1, 4);
-		TurtleWelt.warte(4000);
+		warte();
 		figur.loesche();
 		
 		figur = speicher.gibFigur(2, 3);
@@ -104,7 +111,7 @@ public class Main
 		
 		// Zug (5,4) nach (4,5)
 		figur = speicher.gibFigur(5, 4);
-		TurtleWelt.warte(4000);
+		warte();
 		figur.loesche();
 				
 		figur = speicher.gibFigur(4, 5);
@@ -113,7 +120,7 @@ public class Main
 		
 		// Zug (3,4) nach (5,6)
 		figur = speicher.gibFigur(3, 4);
-		TurtleWelt.warte(4000);
+		warte();
 		figur.loesche();
 				
 		figur = speicher.gibFigur(5, 6);
@@ -125,7 +132,7 @@ public class Main
 		
 		// Zug (6,7) nach (4,5)
 		figur = speicher.gibFigur(6, 7);
-		TurtleWelt.warte(4000);
+		warte();
 		figur.loesche();
 				
 		figur = speicher.gibFigur(4, 5);
@@ -137,7 +144,7 @@ public class Main
 		
 		// Zug (2,7) nach (3,6)
 		figur = speicher.gibFigur(2, 7);
-		TurtleWelt.warte(4000);
+		warte();
 		figur.loesche();
 		
 		figur = speicher.gibFigur(3, 6);
@@ -146,7 +153,7 @@ public class Main
 		
 		// Zug (4,5) nach (2,7)
 		figur = speicher.gibFigur(4, 5);
-		TurtleWelt.warte(4000);
+		warte();
 		figur.loesche();
 						
 		figur = speicher.gibFigur(2, 7);
@@ -155,7 +162,7 @@ public class Main
 				
 		figur = speicher.gibFigur(3, 6);
 		figur.loesche();
-		TurtleWelt.warte(4000);
+		warte();
 		
 		// das wars auch schon
 		TurtleWelt.globaleWelt.loescheAlleSpuren();
@@ -163,10 +170,18 @@ public class Main
 	}
 	
 	/**
-	 * @param args
+	 * Wartet um die Dauer der Ausführung der Methode.
 	 */
-	public static void main(String[] args)
+	private static void warte()
 	{
-		Main.getInstance().start();
+		Turtle turtle = new Turtle(0,0);
+		turtle.hinterlasseKeineSpur();
+		turtle.setzeGeschwindigkeit(5);
+		for (int i = 360; i > 0; --i)
+		{
+			turtle.geheVor(1);
+			turtle.drehe(1);
+		}
+		
 	}
 }

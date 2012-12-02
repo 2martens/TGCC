@@ -329,21 +329,6 @@ class TurtleWelt
         _graphics.drawLine((int)(x1 + 0.5), (int)(y1 + 0.5), (int)(x2 + 0.5), (int)(y2 + 0.5));
         _frame.repaint();
     }
-    
-    /**
-     * Wartet die angegebene Zeit.
-     * @param timeout 
-     */
-    public static void warte(long timeout)
-	{
-		try
-		{
-			Thread.sleep(timeout);
-		}
-		catch (InterruptedException ignore)
-		{
-		}
-	}
 }
 
 /**
