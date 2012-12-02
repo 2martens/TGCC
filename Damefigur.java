@@ -119,9 +119,9 @@ public class Damefigur
 	
 	/**
 	 * Zeichnet die Figur.
-	 * @param farbe 
+	 * @param farbe "schawrz", "blau", "cyan", "dunkelgrau", "grau", "gruen", "hellgrau", "magenta", "orange", "pink", "rot", "weiss" oder "gelb"
 	 */
-	public void zeichne(String farbe)
+	private void zeichne(String farbe)
 	{
 		_turtle.setzeFarbe(farbe);
 		_turtle.hinterlasseKeineSpur();

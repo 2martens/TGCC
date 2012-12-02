@@ -12,16 +12,16 @@ public class Main
 	private static Main _instance;
 	
 	// Enthaelt ein Damebrett.
-	private final  Damebrett _damebrett;
+	private final Damebrett _damebrett;
 	
 	// Enthaelt die Kantenlaenge.
-	private final  int _kantenlaenge;
+	private final int _kantenlaenge;
 	
 	// Enthaelt die x Position.
-	private final  int _xPosition;
+	private final int _xPosition;
 	
 	// Enthaelt die y Position.
-	private final  int _yPosition;
+	private final int _yPosition;
 	
 	/**
 	 * @param args
@@ -60,109 +60,49 @@ public class Main
 	 */
 	public void start()
 	{
-		Figurenspeicher speicher = _damebrett.gibSpeicher();
-		Damefigur figur = speicher.gibFigur(2, 1);
-		
+		boolean weissAmZug = true;
+		boolean warte = true;
 		// Zug (2,1) nach (3,0)
-		warte();
-		
-		figur.setzeGeschwindigkeit(10);
-		figur.loesche();
-		
-		figur = speicher.gibFigur(3, 0);
-		figur.setzeFarbe("weiss");
-		figur.erneutZeichnen();
+		_damebrett.setzeFigur(2, 1, 3, 0, warte, weissAmZug);
 		
 		// Zug (5,6) nach (4,7)
-		figur = speicher.gibFigur(5, 6);
-		warte();
-		figur.loesche();
-		
-		figur = speicher.gibFigur(4, 7);
-		figur.setzeFarbe("rot");
-		figur.erneutZeichnen();
+		weissAmZug = false;
+		_damebrett.setzeFigur(5, 6, 4, 7, warte, weissAmZug);
 		
 		// Zug (2,3) nach (3,4)
-		figur = speicher.gibFigur(2, 3);
-		warte();
-		figur.loesche();
-		
-		figur = speicher.gibFigur(3, 4);
-		figur.setzeFarbe("weiss");
-		figur.erneutZeichnen();
+		weissAmZug = true;
+		_damebrett.setzeFigur(2, 3, 3, 4, warte, weissAmZug);
 		
 		// Zug (5,0) nach (4,1)
-		figur = speicher.gibFigur(5, 0);
-		warte();
-		figur.loesche();
-		
-		figur = speicher.gibFigur(4, 1);
-		figur.setzeFarbe("rot");
-		figur.erneutZeichnen();
+		weissAmZug = false;
+		_damebrett.setzeFigur(5, 0, 4, 1, warte, weissAmZug);
 		
 		// Zug (1,4) nach (2,3)
-		figur = speicher.gibFigur(1, 4);
-		warte();
-		figur.loesche();
-		
-		figur = speicher.gibFigur(2, 3);
-		figur.setzeFarbe("weiss");
-		figur.erneutZeichnen();
+		weissAmZug = true;
+		_damebrett.setzeFigur(1, 4, 2, 3, warte, weissAmZug);
 		
 		// Zug (5,4) nach (4,5)
-		figur = speicher.gibFigur(5, 4);
-		warte();
-		figur.loesche();
-				
-		figur = speicher.gibFigur(4, 5);
-		figur.setzeFarbe("rot");
-		figur.erneutZeichnen();
+		weissAmZug = false;
+		_damebrett.setzeFigur(5, 4, 4, 5, warte, weissAmZug);
 		
 		// Zug (3,4) nach (5,6)
-		figur = speicher.gibFigur(3, 4);
-		warte();
-		figur.loesche();
-				
-		figur = speicher.gibFigur(5, 6);
-		figur.setzeFarbe("weiss");
-		figur.erneutZeichnen();
-		
-		figur = speicher.gibFigur(4, 5);
-		figur.loesche();
+		weissAmZug = true;
+		_damebrett.setzeFigur(3, 4, 5, 6, warte, weissAmZug);
+		_damebrett.loescheFigur(4, 5, warte);
 		
 		// Zug (6,7) nach (4,5)
-		figur = speicher.gibFigur(6, 7);
-		warte();
-		figur.loesche();
-				
-		figur = speicher.gibFigur(4, 5);
-		figur.setzeFarbe("rot");
-		figur.erneutZeichnen();
-		
-		figur = speicher.gibFigur(5, 6);
-		figur.loesche();
+		weissAmZug = false;
+		_damebrett.setzeFigur(6, 7, 4, 5, warte, weissAmZug);
+		_damebrett.loescheFigur(5, 6, warte);
 		
 		// Zug (2,7) nach (3,6)
-		figur = speicher.gibFigur(2, 7);
-		warte();
-		figur.loesche();
-		
-		figur = speicher.gibFigur(3, 6);
-		figur.setzeFarbe("weiss");
-		figur.erneutZeichnen();
+		weissAmZug = true;
+		_damebrett.setzeFigur(2, 7, 3, 6, warte, weissAmZug);
 		
 		// Zug (4,5) nach (2,7)
-		figur = speicher.gibFigur(4, 5);
-		warte();
-		figur.loesche();
-						
-		figur = speicher.gibFigur(2, 7);
-		figur.setzeFarbe("rot");
-		figur.erneutZeichnen();
-				
-		figur = speicher.gibFigur(3, 6);
-		figur.loesche();
-		warte();
+		weissAmZug = false;
+		_damebrett.setzeFigur(4, 5, 2, 7, warte, weissAmZug);
+		_damebrett.loescheFigur(3, 6, warte);
 		
 		// das wars auch schon
 		TurtleWelt.globaleWelt.loescheAlleSpuren();
@@ -170,19 +110,5 @@ public class Main
 		text.zeichneText();
 	}
 	
-	/**
-	 * Wartet um die Dauer der Ausfuehrung der Methode.
-	 */
-	private static void warte()
-	{
-		Turtle turtle = new Turtle(0,0);
-		turtle.hinterlasseKeineSpur();
-		turtle.setzeGeschwindigkeit(5);
-		for (int i = 360; i > 0; --i)
-		{
-			turtle.geheVor(1);
-			turtle.drehe(1);
-		}
-		
-	}
+	
 }

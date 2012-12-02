@@ -81,12 +81,30 @@ public class Figurenspeicher
 	
 	/**
 	 * Setzt die angegebene Figur.
-	 * @param reihe
-	 * @param feld
-	 * @param figur
+	 * @param reihe Eine Zahl zwischen 0 und 7.
+	 * @param feld Eine Zahl zwischen 0 und 7.
+	 * @param figur Eine Damefigur.
 	 */
 	public void setzeFigur(int reihe, int feld, Damefigur figur)
 	{
+		if (reihe < 0)
+		{
+			reihe = 0;
+		}
+		else if (reihe > 7)
+		{
+			reihe = 7;
+		}
+		
+		if (feld < 0)
+		{
+			feld = 0;
+		}
+		else if (feld > 7)
+		{
+			feld = 7;
+		}
+		
 		String figurName = "_" + reihe + feld;
 		
 		switch (figurName)
@@ -289,12 +307,30 @@ public class Figurenspeicher
 	
 	/**
 	 * Gibt die Figur zurueck, die an der angegebenen Stelle gespeichert ist.
-	 * @param reihe
-	 * @param feld
+	 * @param reihe Eine Zahl zwischen 0 und 7.
+	 * @param feld Eine Zahl zwischen 0 und 7.
 	 * @return Die Figur an der angegebenen Stelle oder null.
 	 */
 	public Damefigur gibFigur(int reihe, int feld)
 	{
+		if (reihe < 0)
+		{
+			reihe = 0;
+		}
+		else if (reihe > 7)
+		{
+			reihe = 7;
+		}
+		
+		if (feld < 0)
+		{
+			feld = 0;
+		}
+		else if (feld > 7)
+		{
+			feld = 7;
+		}
+		
 		String figurName = "_" + reihe + feld;
 		Damefigur figur = null;
 		switch (figurName)

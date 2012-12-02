@@ -52,18 +52,60 @@ public class Damebrett
 	}
 	
 	/**
-	 * Setzt eine Figur, die auf startFeld steht auf endFeld.
-	 * @return den Speicher dieses Bretts
+	 * Setze eine Figur, die auf (startReihe, startFeld) steht, auf (zielReihe, zielFeld).
+	 * 
+	 * @param startReihe Eine Zahl zwischen 0 und 7.
+	 * @param startFeld Eine Zahl zwischen 0 und 7.
+	 * @param zielReihe Eine Zahl zwischen 0 und 7.
+	 * @param zielFeld Eine Zahl zwischen 0 und 7.
+	 * @param warte True, wenn die Ausfuehrung verzoegert werden soll.
+	 * @param weissAmZug True, wenn weiss am Zug ist, false wenn rot am Zug ist.
 	 */
-	public Figurenspeicher gibSpeicher()
+	public void setzeFigur(int startReihe, int startFeld, int zielReihe, int zielFeld, boolean warte, boolean weissAmZug)
 	{
-		return _speicher;
+		Damefigur figur = _speicher.gibFigur(startReihe, startFeld);
+		
+		if (warte)
+		{
+			warte();
+		}
+		figur.loesche();
+		
+		figur = _speicher.gibFigur(zielReihe, zielFeld);
+		String farbe = "";
+		if (weissAmZug)
+		{
+			farbe = "weiss";
+		}
+		else
+		{
+			farbe = "rot";
+		}
+		
+		figur.setzeFarbe(farbe);
+		figur.erneutZeichnen();
+	}
+	
+	/**
+	 * Loescht eine Figur an der gegebenen Position.
+	 * @param reihe Eine Zahl zwischen 0 und 7.
+	 * @param feld Eine Zahl zwischen 0 und 7.
+	 * @param warte True, wenn die Ausfuerung verzoegert werden soll.
+	 */
+	public void loescheFigur(int reihe, int feld, boolean warte)
+	{
+		Damefigur figur = _speicher.gibFigur(reihe, feld);
+		figur.loesche();
+		if (warte)
+		{
+			warte();
+		}
 	}
 	
 	/**
 	 * Setzt die Figuren auf das Damefeld.
 	 */
-	public void figurenErstellen()
+	private void figurenErstellen()
 	{
 		for (int reihe = 0; reihe < 8; ++reihe)
 		{
@@ -108,7 +150,7 @@ public class Damebrett
 	 * und weißen Flaechen gefuellt.
 	 * 
 	 */
-	public void brettErstellen()
+	private void brettErstellen()
 	{
 		for (int reihe = 0; reihe < 8; ++reihe)
 		{
@@ -128,7 +170,7 @@ public class Damebrett
 	 * Erstellt eine neue Reihe.
 	 * @param reihennummer
 	 */
-	public void reiheErstellen(int reihennummer)
+	private void reiheErstellen(int reihennummer)
 	{
 		for (int feld = 0; feld < 8; ++feld)
 		{
@@ -163,11 +205,11 @@ public class Damebrett
 	
 	/**
 	 * Befuellt ein Feld mit schwarzer Farbe.
-	 * @param kantenlaenge
+	 * @param kantenlaenge Eine Zahl größer oder gleich 0.
 	 */
-	public void fuelleFeldAus(double kantenlaenge)
+	private void fuelleFeldAus(double kantenlaenge)
 	{
-		if (kantenlaenge == 0)
+		if (kantenlaenge <= 0)
 		{
 			return;
 		}
@@ -179,5 +221,21 @@ public class Damebrett
 		}
 		
 		fuelleFeldAus(kantenlaenge - 1);
+	}
+	
+	/**
+	 * Wartet um die Dauer der Ausfuehrung der Methode.
+	 */
+	private static void warte()
+	{
+		Turtle turtle = new Turtle(0,0);
+		turtle.hinterlasseKeineSpur();
+		turtle.setzeGeschwindigkeit(5);
+		for (int i = 360; i > 0; --i)
+		{
+			turtle.geheVor(1);
+			turtle.drehe(1);
+		}
+		
 	}
 }
