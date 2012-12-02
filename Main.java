@@ -166,7 +166,8 @@ public class Main
 		
 		// das wars auch schon
 		TurtleWelt.globaleWelt.loescheAlleSpuren();
-		// @todo Text schreiben
+		Textzeichner text = new Textzeichner("ENDE", (TurtleWelt.WIDTH / 2) - 20, (TurtleWelt.HEIGHT / 2));
+		text.zeichneText();
 	}
 	
 	/**
